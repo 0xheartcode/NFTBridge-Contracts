@@ -25,20 +25,13 @@ contract BridgeTest is Test {
         vm.deal(user1, 100 ether);
     }
 
-   
-
     function test_Bridge() public {
-        
-                          
         vm.startPrank(0x0000000000000000000000000000000000000000);
 
         NFT.setApprovalForAll(address(Bridge), true);
-        bool hasApproval = NFT.isApprovedForAll(
-            0x0000000000000000000000000000000000000000,
-            address(Bridge)
-        );
+        bool hasApproval = NFT.isApprovedForAll(0x0000000000000000000000000000000000000000, address(Bridge));
         assertTrue(hasApproval);
-        
+
         Bridge.lock(msg.sender, 1, 0, 0, 0);
         vm.stopPrank();
     }

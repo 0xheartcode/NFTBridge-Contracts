@@ -7,22 +7,15 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract OpenseaNFT is ERC1155, Ownable(msg.sender) {
     // Token IDs
-    uint256 public constant mediathree =
-        33;
-    uint256 public constant mediafour =
-        44;
-    uint256 public constant mediatwo =
-        22;
-    uint256 public constant mediaone =
-        11;
+    uint256 public constant mediathree = 33;
+    uint256 public constant mediafour = 44;
+    uint256 public constant mediatwo = 22;
+    uint256 public constant mediaone = 11;
 
     // Base URI
-    string private _baseURI =
-        "https://network-server-production.up.railway.app/metadata/";
+    string private _baseURI = "https://network-server-production.up.railway.app/metadata/";
 
-    constructor()
-        ERC1155("https://network-server-production.up.railway.app/{id}")
-    {}
+    constructor() ERC1155("https://network-server-production.up.railway.app/{id}") {}
 
     /**
      * @dev Function to update the base URI.
@@ -37,10 +30,7 @@ contract OpenseaNFT is ERC1155, Ownable(msg.sender) {
     }
 
     function mint(address account, uint256 id, uint256 amount) external {
-        require(
-            id == mediathree || id == mediafour || id == mediatwo || id == mediaone,
-            "Invalid token ID"
-        );
+        require(id == mediathree || id == mediafour || id == mediatwo || id == mediaone, "Invalid token ID");
         _mint(account, id, amount, "");
     }
 
@@ -48,6 +38,4 @@ contract OpenseaNFT is ERC1155, Ownable(msg.sender) {
         // Convert token ID to string
         return string(abi.encodePacked(_baseURI, Strings.toString(id)));
     }
-
-  
 }

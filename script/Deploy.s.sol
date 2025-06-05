@@ -18,13 +18,7 @@ contract DeployScript is Script {
         vm.startBroadcast(privateKey);
 
         Bridge = NFTBridge(0x0000000000000000000000000000000000000000);
-        Bridge.lock(
-            0x0000000000000000000000000000000000000000,
-            1,
-            0,
-            0,
-            0
-        );
+        Bridge.lock(0x0000000000000000000000000000000000000000, 1, 0, 0, 0);
 
         vm.stopBroadcast();
     }

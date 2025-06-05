@@ -39,13 +39,13 @@ contract NETWORK1155Test is Test {
     }
 
     function test_transfer_to_user() public {
-        uint[] memory tokenIds = new uint[](4);
+        uint256[] memory tokenIds = new uint256[](4);
         tokenIds[0] = 0;
         tokenIds[1] = 1;
         tokenIds[2] = 2;
         tokenIds[3] = 3;
 
-        uint[] memory amounts = new uint[](4);
+        uint256[] memory amounts = new uint256[](4);
         amounts[0] = 5;
         amounts[1] = 2;
         amounts[2] = 1;

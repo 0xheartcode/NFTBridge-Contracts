@@ -15,8 +15,7 @@ contract NETWORK1155 is ERC1155, Ownable(msg.sender) {
     uint256 public constant mediaone = 3;
 
     // Base URI
-    string private _baseURI =
-        "https://network-server-production.up.railway.app/metadata/";
+    string private _baseURI = "https://network-server-production.up.railway.app/metadata/";
 
     // Minting limits
     uint256 public constant MAX_mediathree = 50;
@@ -47,24 +46,14 @@ contract NETWORK1155 is ERC1155, Ownable(msg.sender) {
         _baseURI = newURI;
     }
 
-    function mint(
-        address account,
-        uint256[] memory ids,
-        uint256[] memory amounts
-    ) external onlyAdmin {
-        require(
-            ids.length == amounts.length,
-            "IDs and amounts length mismatch"
-        );
+    function mint(address account, uint256[] memory ids, uint256[] memory amounts) external onlyAdmin {
+        require(ids.length == amounts.length, "IDs and amounts length mismatch");
 
         for (uint256 i = 0; i < ids.length; i++) {
             uint256 id = ids[i];
             uint256 amount = amounts[i];
 
-            require(
-                id == mediathree || id == mediafour || id == mediatwo || id == mediaone,
-                "Invalid token ID"
-            );
+            require(id == mediathree || id == mediafour || id == mediatwo || id == mediaone, "Invalid token ID");
 
             if (amount > 0) {
                 safeTransferFrom(address(this), account, id, amount, "");
